@@ -1,0 +1,45 @@
+### run shell script ###
+
+$ ./build_push_image.sh
+[+] Building 101.1s (11/11) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                                            0.1s 
+ => => transferring dockerfile: 32B                                                                                                                                                             0.0s 
+ => [internal] load .dockerignore                                                                                                                                                               0.0s 
+ => => transferring context: 34B                                                                                                                                                                0.0s 
+ => [internal] load metadata for docker.io/library/node:14-alpine                                                                                                                               4.4s 
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                                                                     0.0s 
+ => [1/5] FROM docker.io/library/node:14-alpine@sha256:434215b487a329c9e867202ff89e704d3a75e554822e07f3e0c0f9e606121b33                                                                         0.0s 
+ => [internal] load build context                                                                                                                                                               0.1s 
+ => => transferring context: 3.25kB                                                                                                                                                             0.0s 
+ => CACHED [2/5] WORKDIR /app                                                                                                                                                                   0.0s 
+ => [3/5] COPY . .                                                                                                                                                                              0.2s 
+ => [4/5] RUN npm install --production --unsafe-perm                                                                                                                                           71.1s 
+ => [5/5] RUN npm run build                                                                                                                                                                    22.1s 
+ => exporting to image                                                                                                                                                                          2.7s 
+ => => exporting layers                                                                                                                                                                         2.7s 
+ => => writing image sha256:957c1c39936d217e3ac31bdaa9b82fcc12bfc49b4e2756aeea1323a975d857f2                                                                                                    0.0s
+ => => naming to docker.io/library/item-app:v1                                                                                                                                                  0.0s
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+item-app     v1        957c1c39936d   7 seconds ago    157MB
+<none>       <none>    a095228f8626   41 minutes ago   157MB
+ipuser       1.0.0     df6c549af26d   10 months ago    128MB
+simpleapp    latest    6656148aa238   10 months ago    128MB
+mongo        3         2f21415cb85f   2 years ago      453MB
+The push refers to repository [docker.io/sanjanivicky/item-app]
+6ad8b38aca50: Pushed
+8ece0b523db2: Pushed
+49524c2de328: Pushed
+3cc774c3f688: Pushed
+31f710dc178f: Mounted from library/node
+a599bf3e59b8: Mounted from library/node
+e67e8085abae: Mounted from library/node
+f1417ff83b31: Mounted from library/node
+v1: digest: sha256:425e7dbb54008b492ea9972905b8f25b9b23cf53b6f7719b2cc0517635db94bc size: 1997
+
+### run docker compose ###
+docker compose up -d
+[+] Running 2/2
+ - Container a433-microservices-item-app-1  Started                                                                                                                                             2.2s 
+ - Container a433-microservices-item-db-1   Started   
+
+
