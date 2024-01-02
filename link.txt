@@ -1,1 +1,2 @@
-https://hub.docker.com/repository/docker/sanjanivicky/item-app
+link image => https://hub.docker.com/repository/docker/sanjanivicky/item-app
+link fork repo => https://github.com/rofiqirapsanjani/a433-microservices/tree/proyek-pertama
