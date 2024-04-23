@@ -7,7 +7,7 @@ docker build -t karsajobs-ui:lattest .
 docker images
  
 # Tag the image according to Docker Hub format
-docker tag item-app:v1 sanjanivicky/karsajobs-ui:lattest
+docker tag karsajobs-ui:lattest sanjanivicky/karsajobs-ui:lattest
 
 docker login
  
