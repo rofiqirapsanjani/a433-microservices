@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  order:
+    image: order
+    volumes:
+      - .:/src
+    environment:
+      AMQP_URL: amqp://localhost:5673
+    networks:
+      - rabbitmq_network
+
+networks:
+  rabbitmq_network:
+    external:
+      name: rabbitmq_default
