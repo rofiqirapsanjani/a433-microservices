@@ -13,6 +13,8 @@ ENV AMQP_URL="amqp://localhost:5673"
  
 #run command
 RUN npm ci
+# Expose port 3000
+EXPOSE 3000
 
 # run command
 CMD ["node", "index.js"]
