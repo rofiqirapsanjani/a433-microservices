@@ -1,10 +1,11 @@
 version: "3.4"
 services:
-  order:
-    image: order
+  consumer:
+    image: sanjanivicky/shipping-service:v1
     volumes:
       - .:/src
     environment:
+      NODE_ENV: production
       AMQP_URL: amqp://localhost:5673
     networks:
       - rabbitmq_network
