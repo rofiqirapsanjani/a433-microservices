@@ -1,18 +1,21 @@
-# pulling from the base image
-FROM node:14-alpine 
+FROM node:18-alpine as base
+WORKDIR /src
+COPY package*.json ./
  
-# make a directory inside the cotainer
-WORKDIR /app
- 
-# copy all file in the current directory to the /app directory in the cotainer
-COPY . .
- 
-# make a environment variable with the value
-ENV PORT=3000
-ENV AMQP_URL="amqp://localhost:5673"
- 
-#run command
+FROM base as production
+ENV NODE_ENV=production
+ENV PORT=3001
 RUN npm ci
-
-# run command
+COPY ./*.js ./
+CMD ["node", "index.js"]
+ 
+FROM base as dev
+RUN apk add --no-cache bash
+RUN wget -O /bin/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
+RUN chmod +x /bin/wait-for-it.sh
+ 
+ENV NODE_ENV=development
+ENV PORT=3001
+RUN npm install
+COPY ./*.js ./
 CMD ["node", "index.js"]
