@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   order:
-    image: order
+    image: sanjanivicky/order-service:v1
     volumes:
       - .:/src
     environment:
